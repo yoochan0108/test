@@ -6,7 +6,7 @@ export default function Youtube() {
 	const [Youtube, setYoutube] = useState([]);
 
 	const fatchYoutube = () => {
-		const api_key = 'AIzaSyBoPJP34_cHU3rfs3RDDuL-NPXBv01f608';
+		const api_key = process.env.REACT_APP_YOUTUBE_API;
 		const baseURL = 'https://www.googleapis.com/youtube/v3/playlistItems';
 		const pid = 'PLuPg_rytnr6k-sPrYGREjbXLMZzwE7-N-&si=c72x_0iZr-7tHUMA';
 		const num = 5;
