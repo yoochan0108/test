@@ -28,6 +28,7 @@ export default function Youtube() {
 			{Youtube.map((data, idx) => {
 				return (
 					<article key={idx}>
+						<p>test</p>
 						<h2>{data.snippet.title}</h2>
 						<p>{data.snippet.description}</p>
 						<div className='pic'>
