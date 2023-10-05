@@ -44,9 +44,9 @@ export default function Youtube() {
 				{Youtube.map((data, idx) => {
 					return (
 						<article key={idx}>
-							<h2 onClick={() => console.log(refEl.current)}>{data.snippet.title}</h2>
+							<h2 onClick={() => console.log(refEl)}>{data.snippet.title}</h2>
 							<p>{data.snippet.description}</p>
-							<div className='pic' onClick={() => setIsModal(true)}>
+							<div className='pic' onClick={() => refEl.current.open()}>
 								<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
 							</div>
 						</article>
