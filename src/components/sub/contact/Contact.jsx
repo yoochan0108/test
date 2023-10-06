@@ -7,6 +7,7 @@ export default function Contact() {
 	const instance = useRef(null);
 	const [Traffic, setTraffic] = useState(false);
 	const [Index, setIndex] = useState(2);
+	const [IsMap, setIsMap] = useState(true);
 
 	//현재 kakao객체를 cdn으로 가져오고 있기 때문에
 	//리액트 컴포넌트안쪽에서 window객체로부터 kakao객체를 비구조화할당을 이용해서 수동으로 꺼내옴
@@ -66,9 +67,13 @@ export default function Contact() {
 		window.addEventListener('resize', setCenter);
 
 		//로드뷰
-		new kakao.maps.RoadviewClient().getNearestPanoId(info.current[Index].latlng, 50, (panoId) => {
-			new kakao.maps.Roadview(view.current).setPanoId(panoId, info.current[Index].latlng); //panoId와 중심좌표를 통해 로드뷰 실행
-		});
+		new kakao.maps.RoadviewClient().getNearestPanoId(
+			info.current[Index].latlng,
+			50, //해당 지도의 위치값에서 변경 100미터 안에 제일 가까운 도로 기준으로 로드뷰 화면 생성
+			(panoId) => {
+				new kakao.maps.Roadview(view.current).setPanoId(panoId, info.current[Index].latlng); //panoId와 중심좌표를 통해 로드뷰 실행
+			}
+		);
 	}, [Index]); //Index값이 변경될때마다 지도화면이 다시 생신되어야 하므로 Index값을 의존성 배열에 등록
 
 	useEffect(() => {
@@ -87,9 +92,12 @@ export default function Contact() {
 			</button>
 
 			<button onClick={setCenter}>지도 버튼 초기화</button>
-			<div className='map' ref={map}></div>
+			<button onClick={() => setIsMap(!IsMap)}>{IsMap ? '로드뷰보기' : '지도보기'}</button>
 
-			<div className='view' ref={view}></div>
+			<div className='container'>
+				<div className={`view ${IsMap ? '' : 'on'}`} ref={view}></div>
+				<div className={`map ${IsMap ? 'on' : ''}`} ref={map}></div>
+			</div>
 
 			<ul>
 				{info.current.map((el, idx) => (
