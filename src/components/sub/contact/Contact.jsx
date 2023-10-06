@@ -97,7 +97,7 @@ export default function Contact() {
 			}
 		);
 	};
-	//form-mail관련 useEffect
+	//form-mail관련 useEffectdwwdw
 	useEffect(() => {});
 
 	return (
