@@ -84,6 +84,10 @@ export default function Gallery() {
 						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
 						//fetchData함수 호출 방지
 						if (e.target.classList.contains('on')) return;
+
+						const btns = refBtnSet.current.querySelectorAll('button');
+						btns.forEach((btn) => btn.classList.remove('on'));
+						e.target.classList.add('on');
 						fetchData({ type: 'user', id: my_id });
 					}}
 				>
@@ -94,6 +98,12 @@ export default function Gallery() {
 						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
 						//fetchData함수 호출 방지
 						if (e.target.classList.contains('on')) return;
+
+						const btns = refBtnSet.current.querySelectorAll('button');
+						btns.forEach((btn) => btn.classList.remove('on'));
+						e.target.classList.add('on');
+						fetchData({ type: 'user', id: my_id });
+
 						fetchData({ type: 'interest' });
 					}}
 				>
