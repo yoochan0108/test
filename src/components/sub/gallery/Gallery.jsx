@@ -6,6 +6,7 @@ import Masonry from 'react-masonry-component';
 export default function Gallery() {
 	const refFrame = useRef(null);
 	const refInput = useRef(null);
+	const refBtnSet = useRef(null);
 	const [Pics, setPics] = useState([]);
 	const [Loader, setLoader] = useState(true);
 	const my_id = '199272370@N07';
@@ -16,7 +17,7 @@ export default function Gallery() {
 		let url = '';
 		const api_key = '2a1a0aebb34012a99c23e13b49175343';
 		const method_interest = 'flickr.interestingness.getList';
-		const num = 500;
+		const num = 100;
 		const method_user = 'flickr.people.getPhotos';
 		const method_search = 'flickr.photos.search';
 
@@ -76,11 +77,29 @@ export default function Gallery() {
 					<button>검색</button>
 				</form>
 			</div>
-			<div className='btnSet'>
-				<button onClick={() => fetchData({ type: 'user', id: my_id })}>My Gallery</button>
-				<button onClick={() => fetchData({ type: 'interest' })}>Interest Gallery</button>
+			<div className='btnSet' ref={refBtnSet}>
+				<button
+					className='on'
+					onClick={(e) => {
+						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
+						//fetchData함수 호출 방지
+						if (e.target.classList.contains('on')) return;
+						fetchData({ type: 'user', id: my_id });
+					}}
+				>
+					My Gallery
+				</button>
+				<button
+					onClick={(e) => {
+						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
+						//fetchData함수 호출 방지
+						if (e.target.classList.contains('on')) return;
+						fetchData({ type: 'interest' });
+					}}
+				>
+					Interest Gallery
+				</button>
 			</div>
-
 			{/* Loader가 true일때에만 로딩 이미지 출력 */}
 			{Loader && (
 				<img className='loading' src={`${process.env.PUBLIC_URL}/img/loading.gif`} alt='loading' />
@@ -102,7 +121,6 @@ export default function Gallery() {
 										alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
 									/>
 									<h2>{data.title}</h2>
-
 									<div className='profile'>
 										<img
 											src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
