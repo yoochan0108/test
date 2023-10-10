@@ -1,6 +1,7 @@
 import Layout from '../../common/layout/Layout';
 import './Gallery.scss';
 import { useState, useEffect } from 'react';
+import Masonry from 'react-masonry-component';
 
 export default function Gallery() {
 	const [Pics, setPics] = useState([]);
@@ -20,21 +21,36 @@ export default function Gallery() {
 	return (
 		<Layout title={'Gallery'}>
 			<div className='picFrame'>
-				{Pics.map((data, idx) => {
-					return (
-						<article key={idx}>
-							<div className='inner'>
-								<img
-									src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
-									alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
-								/>
-								<h2>{data.title}</h2>
-							</div>
-						</article>
-					);
-				})}
+				<Masonry
+					elementType={'div'}
+					options={{ masonryOptions: '0,5s' }}
+					disableImagesLoaded={false}
+					updateOnEachImageLoad={false}
+				>
+					{Pics.map((data, idx) => {
+						return (
+							<article key={idx}>
+								<div className='inner'>
+									<img
+										src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
+										alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+									/>
+									<h2>{data.title}</h2>
+
+									<div className='inner'>
+										<img
+											className='pic'
+											src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.secret}.jpg`}
+											alt={data.onner}
+										/>
+										<span>{data.onner}</span>
+									</div>
+								</div>
+							</article>
+						);
+					})}
+				</Masonry>
 			</div>
-			);
 		</Layout>
 	);
 }
