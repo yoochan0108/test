@@ -12,6 +12,8 @@ export default function Gallery() {
 	//대체이미지가 추가되었는지 아닌지를 확인하는 state
 	//Fix(true): 대체이미지 추가됨, Fix(false): 대체이미지 적용안됨
 	const [Fix, setFix] = useState(false);
+	//현재 갤러리 타입이 User타입인지 확인하기 위한 state추가
+	const [IsUser, setIsUser] = useState(true);
 	const my_id = '199272370@N07';
 
 	const fetchData = async (opt) => {
@@ -21,7 +23,7 @@ export default function Gallery() {
 		let url = '';
 		const api_key = '2a1a0aebb34012a99c23e13b49175343';
 		const method_interest = 'flickr.interestingness.getList';
-		const num = 10;
+		const num = 50;
 		const method_user = 'flickr.people.getPhotos';
 		const method_search = 'flickr.photos.search';
 
@@ -73,6 +75,8 @@ export default function Gallery() {
 				<form
 					onSubmit={(e) => {
 						e.preventDefault();
+						//검색 갤러리 이벤트 발생시 IsUser값을 false로 변경
+						setIsUser(false);
 						if (refInput.current.value.trim() === '') {
 							return alert('검색어를 입력하세요.');
 						}
@@ -88,8 +92,8 @@ export default function Gallery() {
 				<button
 					className='on'
 					onClick={(e) => {
-						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
-						//fetchData함수 호출 방지
+						//마이갤러리 버튼 클릭시 User type갤러리이기 때문에 IsUser값을 true로 변경
+						setIsUser(true);
 						if (e.target.classList.contains('on')) return;
 
 						const btns = refBtnSet.current.querySelectorAll('button');
@@ -102,8 +106,9 @@ export default function Gallery() {
 				</button>
 				<button
 					onClick={(e) => {
-						//각 버튼 클릭시 해당 버튼에 만약 on클래스가 있으면 이미 활성화 되어 있는 버튼이므로 return으로 종료해서
-						//fetchData함수 호출 방지
+						//Interest Gallery는 User type 갤러리가 아니기 때문에
+						//IsUser값을 false로 변경
+						setIsUser(false);
 						if (e.target.classList.contains('on')) return;
 
 						const btns = refBtnSet.current.querySelectorAll('button');
@@ -153,7 +158,12 @@ export default function Gallery() {
 										/>
 										<span
 											onClick={() => {
+												//사용자 아이디 클릭시 현재 출력되는 갤러리가 User 타입 갤러리면 이벤트 호출 방지
+												if (IsUser) return;
+
+												//fetchData가 실행이 되면 다시 User type갤러리로 변경되므로 다시 IsUser값을 true로 변경
 												fetchData({ type: 'user', id: data.owner });
+												setIsUser(true);
 											}}
 										>
 											{data.owner}
