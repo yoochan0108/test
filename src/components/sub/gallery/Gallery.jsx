@@ -6,7 +6,7 @@ export default function Gallery() {
 	const [Pics, setPics] = useState([]);
 	const api_key = 'b6c85d56ee255dee970b2241f275f09d';
 	const method_interest = 'flickr.interestingness.getList';
-	const num = 500;
+	const num = 50;
 	const url = `https://www.flickr.com/services/rest/?method=${method_interest}&api_key=${api_key}&per_page=${num}&nojsoncallback=1&format=json`;
 
 	useEffect(() => {
@@ -19,17 +19,22 @@ export default function Gallery() {
 	}, []);
 	return (
 		<Layout title={'Gallery'}>
-			{Pics.map((data, idx) => {
-				return (
-					<article key={{ idx }}>
-						<h2>{data.title}</h2>
-						<img
-							src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
-							alt={data.title}
-						/>
-					</article>
-				);
-			})}
+			<div className='picFrame'>
+				{Pics.map((data, idx) => {
+					return (
+						<article key={idx}>
+							<div className='inner'>
+								<img
+									src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
+									alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+								/>
+								<h2>{data.title}</h2>
+							</div>
+						</article>
+					);
+				})}
+			</div>
+			);
 		</Layout>
 	);
 }
