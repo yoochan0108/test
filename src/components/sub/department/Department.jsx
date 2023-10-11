@@ -28,6 +28,7 @@ export default function Department() {
 							</div>
 							<h2>{member.name}</h2>
 							<p>{member.position}</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, nesciunt. </p>
 						</article>
 					);
 				})}
