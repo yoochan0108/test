@@ -52,4 +52,29 @@ export default function Department() {
 	- 가상돔 생성은 리엑트 기반의 스크립트가 처리해주시면 외부 데이터를 가져오는 것은 Web API (브라우저)가 처리가기 때문에
 	- 컴포넌트가 실제 브라우저상에 마운트가되고 브라우저가 작업 준비가 되야지만 fetch를 실행할 수 있기 때문에
 	- useEffect컴포넌트가 마운트 되야지만 CSR방식으로 외부 데이터를 가져올 수 있음.
+
+	컴포넌트 작성 순서
+	import로 외부 모듈, 외부 컴포넌트 불러오기
+	
+	export, default, function 컴포넌트이름(){
+		필요시 hook 호출 (hook안에서 hook호출 불가, 핸들러안쪽에서 호출불가)
+
+		필요시 핸들러함수 정의
+
+		useEffect(()=>{
+			핸들러 함수 호출 (fetch, 이벤트연결)
+		})
+
+		return JSX
+	}
+
+	fetch: ES6에서 기본문법으로 포함된 동기적으로 외부 데이터를 가져오는 내장함수
+
+	fetch는 promies반환
+	promies가 반환되야지 .then구문 호출가능
+	.then구문을 호출해야지만 동기적으로 다음코드 실행가능
+
+	JSON (Javascript Object Notation) 자바스크립트 객체 표현식
+	-자바스크립트의 객체를 문자열형태로 관리하는 데이터 형식
+	-문자 형식으로 되어있는 JSON는 다시 객체형식으로 변환 (parsing)
 */
