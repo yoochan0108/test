@@ -110,21 +110,7 @@ export default function Gallery() {
 		<>
 			<Layout title={'Gallery'}>
 				<div className='searchBox'>
-					<form
-						onSubmit={(e) => {
-							e.preventDefault();
-							setIsUser(false);
-							const btns = refBtnSet.current.querySelectorAll('button');
-							btns.forEach((btn) => btn.classList.remove('on'));
-
-							if (refInput.current.value.trim() === '') {
-								return alert('검색어를 입력하세요.');
-							}
-
-							fetchData({ type: 'search', tags: refInput.current.value });
-							refInput.current.value = '';
-						}}
-					>
+					<form onSubmit={handleSubmit}>
 						<input ref={refInput} type='text' placeholder='검색어를 입력하세요' />
 						<button>검색</button>
 					</form>
