@@ -16,6 +16,7 @@ export default function Gallery() {
 	const [Open, setOpen] = useState(false);
 	const my_id = '199272370@N07';
 
+	//처음 마운트 데이터 호출 함수
 	const fetchData = async (opt) => {
 		let count = 0;
 		setLoader(true);
@@ -58,6 +59,49 @@ export default function Gallery() {
 		});
 	};
 
+	//submit이벤트 발생시 실행할 함수
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setIsUser(false);
+		const btns = refBtnSet.current.querySelectorAll('button');
+		btns.forEach((btn) => btn.classList.remove('on'));
+
+		if (refInput.current.value.trim() === '') {
+			return alert('검색어를 입력하세요.');
+		}
+
+		fetchData({ type: 'search', tags: refInput.current.value });
+		refInput.current.value = '';
+	};
+
+	const handleClickMy = (e) => {
+		setIsUser(true);
+		if (e.target.classList.contains('on')) return;
+
+		const btns = refBtnSet.current.querySelectorAll('button');
+		btns.forEach((btn) => btn.classList.remove('on'));
+		e.target.classList.add('on');
+
+		fetchData({ type: 'user', id: my_id });
+	};
+
+	const handleClickInterest = (e) => {
+		setIsUser(false);
+		if (e.target.classList.contains('on')) return;
+
+		const btns = refBtnSet.current.querySelectorAll('button');
+		btns.forEach((btn) => btn.classList.remove('on'));
+		e.target.classList.add('on');
+
+		fetchData({ type: 'interest' });
+	};
+
+	const handleClickProfile = (e) => {
+		if (IsUser) return;
+
+		fetchData({ type: 'user', id: e.target.innerText });
+		setIsUser(true);
+	};
 	useEffect(() => {
 		fetchData({ type: 'user', id: my_id });
 	}, []);
@@ -87,36 +131,10 @@ export default function Gallery() {
 				</div>
 
 				<div className='btnSet' ref={refBtnSet}>
-					<button
-						className='on'
-						onClick={(e) => {
-							//마이갤러리 버튼 클릭시 User type갤러리이기 때문에 IsUser값을 true로 변경
-							setIsUser(true);
-							if (e.target.classList.contains('on')) return;
-
-							const btns = refBtnSet.current.querySelectorAll('button');
-							btns.forEach((btn) => btn.classList.remove('on'));
-							e.target.classList.add('on');
-
-							fetchData({ type: 'user', id: my_id });
-						}}
-					>
+					<button className='on' onClick={handleClickMy}>
 						My Gallery
 					</button>
-					<button
-						onClick={(e) => {
-							setIsUser(false);
-							if (e.target.classList.contains('on')) return;
-
-							const btns = refBtnSet.current.querySelectorAll('button');
-							btns.forEach((btn) => btn.classList.remove('on'));
-							e.target.classList.add('on');
-
-							fetchData({ type: 'interest' });
-						}}
-					>
-						Interest Gallery
-					</button>
+					<button onClick={handleClickInterest}>Interest Gallery</button>
 				</div>
 
 				{Loader && (
@@ -160,16 +178,7 @@ export default function Gallery() {
 													);
 												}}
 											/>
-											<span
-												onClick={() => {
-													if (IsUser) return;
-
-													fetchData({ type: 'user', id: data.owner });
-													setIsUser(true);
-												}}
-											>
-												{data.owner}
-											</span>
+											<span onClick={handleClickProfile}></span>
 										</div>
 									</div>
 								</article>
