@@ -11,6 +11,16 @@
       "pic": "member2.jpg"
     },
     {
+      "name": "marry",
+      "position": "Vice President",
+      "pic": "member3.jpg"
+    },
+    {
+      "name": "james",
+      "position": "Vice President",
+      "pic": "member4.jpg"
+    },
+    {
       "name": "Emma",
       "position": "Back-end Developer",
       "pic": "member5.jpg"
