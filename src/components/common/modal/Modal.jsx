@@ -1,7 +1,7 @@
 import './Modal.scss';
 import { useEffect } from 'react';
 
-function Modal({ children, setIsModal }) {
+function Modal({ children, setIsModal, setActiveURL }) {
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';
 
