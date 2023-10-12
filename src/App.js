@@ -25,7 +25,7 @@ function App() {
 			<Route path='/youtube' component={Youtube} />
 			<Route path='/members' component={Members} />
 			<Route path='/contact' component={Contact} />
-			<Route path='/detail:id' component={Detail} />
+			<Route path='/detail/:id' component={Detail} />
 		</>
 	);
 }
