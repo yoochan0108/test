@@ -11,7 +11,7 @@ export default function Gallery() {
 	const [ActiveURL, setActiveURL] = useState('');
 	const [IsUser, setIsUser] = useState(true);
 	const [IsModal, setIsModal] = useState(false);
-	const my_id = '164021883@N04';
+	const my_id = '199272370@N07';
 
 	//처음 마운트 데이터 호출 함수
 	const fetchData = async (opt) => {
