@@ -1,11 +1,9 @@
 import Layout from '../../common/layout/Layout';
-import Modal from '../../common/modal/Modal';
 import './Youtube.scss';
 import { useEffect, useState } from 'react';
 export default function Youtube() {
 	const [Youtube, setYoutube] = useState([]);
-	const [IsModal, setIsModal] = useState(false);
-	const [Index, setIndex] = useState(0);
+
 	//async await로 동기화 코드를 좀더 깔끔하게 정리
 	const fetchYoutube = async () => {
 		const api_key = process.env.REACT_APP_YOUTUBE_API;
@@ -13,10 +11,12 @@ export default function Youtube() {
 		const pid = 'PLuPg_rytnr6k-sPrYGREjbXLMZzwE7-N-&si=c72x_0iZr-7tHUMA';
 		const num = 5;
 		const resultURL = `${baseURL}?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
+
 		const data = await fetch(resultURL);
 		const json = await data.json();
 		setYoutube(json.items);
 	};
+
 	useEffect(() => {
 		fetchYoutube();
 	}, []);
@@ -36,27 +36,21 @@ export default function Youtube() {
 								<p>{desc.length > 180 ? desc.substr(0, 180) + '...' : desc}</p>
 								<span className='Day'>{date.split('T')[0].split('-').join('.')}</span>
 							</div>
-							<div
-								className='picBox'
-								onClick={() => {
-									setIndex(idx);
-									setIsModal(true);
-								}}
-							>
+							<div className='picBox'>
 								<img src={data.snippet.thumbnails.standard.url} alt={data.title} />
 							</div>
 						</article>
 					);
 				})}
 			</Layout>
-			{IsModal && (
+			{/* {IsModal && (
 				<Modal setIsModal={setIsModal}>
 					<iframe
 						src={`https://www.youtube.com/embed/${Youtube[Index].snippet.resourceId.videoId}`}
 						title='youtube'
 					></iframe>
-				</Modal>
-			)}
+				</Modal> 
+			)}*/}
 		</>
 	);
 }
@@ -67,7 +61,7 @@ export default function Youtube() {
   리액트에서 자식 컴포넌트에서는 직접적으로 부모 컴포넌트의 state값 변경이 불가
   - 해결방법 부모의 state변경함수를 자식 컴포넌트로 전달
   - 자식컴포넌트에서는 전달받은 state변경함수로 간접적으로 부모 state값 변경가능
-  promsie .then구문을 좀더 구조적으로 짜는 방법 (async await) -> then구문을 쓸 필요가 없어짐
+  promise .then구문을 좀더 구조적으로 짜는 방법 (async await) -> then구문을 쓸 필요가 없어짐
   async await 사용조건
   - promise반환함수를 wrapping처리
   - wrapping된 함수에 async 적용
