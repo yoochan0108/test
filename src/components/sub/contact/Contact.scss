@@ -136,6 +136,12 @@
 		margin-bottom: 40px;
 		text-align: center;
 	}
+	.container {
+		article {
+			display: flex;
+			margin-bottom: 20px;
+		}
+	}
 }
 
 @media screen and (max-width: 1399px) {
