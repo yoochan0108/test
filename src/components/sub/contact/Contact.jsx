@@ -212,30 +212,12 @@ export default function Contact() {
 			<div className='FAQ'>
 				<h2>F.A.Q</h2>
 				<div className='container'>
-					<article>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. In officiis voluptatum totam
-						quo reprehenderit quibusdam cupiditate
-					</article>
-					<article>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. In officiis voluptatum totam
-						quo reprehenderit quibusdam cupiditate
-					</article>
-					<article>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. In officiis voluptatum totam
-						quo reprehenderit quibusdam cupiditate
-					</article>
-					<article>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. In officiis voluptatum totam
-						quo reprehenderit quibusdam cupiditate
-					</article>
-					<article>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. In officiis voluptatum totam
-						quo reprehenderit quibusdam cupiditate
-					</article>
-					<article>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. In officiis voluptatum totam
-						quo reprehenderit quibusdam cupiditate
-					</article>
+					<article>Lorem ipsum dolor sit amet consectetur</article>
+					<article>Lorem ipsum dolor sit amet consectetur</article>
+					<article>Lorem ipsum dolor sit amet consectetur</article>
+					<article>Lorem ipsum dolor sit amet consectetur</article>
+					<article>Lorem ipsum dolor sit amet consectetur</article>
+					<article>Lorem ipsum dolor sit amet consectetur</article>
 				</div>
 			</div>
 		</Layout>

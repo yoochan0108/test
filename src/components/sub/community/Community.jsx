@@ -5,6 +5,8 @@ import { useRef, useState } from 'react';
 export default function Community() {
 	const refInput = useRef(null);
 	const refTextarea = useRef(null);
+	const refEditInput = useRef(null);
+	const refEditTextarea = useRef(null);
 	const [Posts, setPosts] = useState([]);
 	console.log(Posts);
 
@@ -49,6 +51,21 @@ export default function Community() {
 		);
 	};
 
+	//실제 글 수정하는 함수
+	const updatePost = (updateIndex) => {
+		//setPosts로 기존 Post배열같은 덮어쓰기해서 변경
+		//리액트에서는 참조형 자료는 무조건 배열값을 Deep copy한뒤 변경
+		setPosts(
+			Posts.map((post, idx) => {
+				if (updateIndex === idx) {
+					post.title = refEditInput.current.value;
+					post.content = refEditTextarea.current.value;
+				}
+				return post;
+			})
+		);
+	};
+
 	return (
 		<Layout title={'Community'}>
 			<div className='inputBox'>
@@ -69,17 +86,25 @@ export default function Community() {
 						return (
 							<article key={idx}>
 								<div className='txt'>
-									<input type='text' defaultValue={post.title} />
+									<input type='text' defaultValue={post.title} ref={refEditInput} />
 									<br />
 									<textarea
 										//react에서 value속성을 적용하려면 무조건 onChange이벤트 연결 필수
 										//onChange이벤트 연결하지 않을때에는 value가닌 defaultValue속성 적용
 										defaultValue={post.content}
+										ref={refEditTextarea}
 									/>
 								</div>
 								<nav className='btnSet'>
 									<button onClick={() => disableUpdate(idx)}>Cancel</button>
-									<button>Update</button>
+									<button
+										onClick={() => {
+											updatePost(idx);
+											disableUpdate(idx);
+										}}
+									>
+										Update
+									</button>
 								</nav>
 							</article>
 						);

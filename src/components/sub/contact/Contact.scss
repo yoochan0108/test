@@ -140,14 +140,15 @@
 		article {
 			display: flex;
 			margin-bottom: 20px;
+			margin-top: 20px;
 		}
 	}
-}
 
-@media screen and (max-width: 1399px) {
-	.Contact {
-		#mailBox {
-			width: 100%;
+	@media screen and (max-width: 1399px) {
+		.Contact {
+			#mailBox {
+				width: 100%;
+			}
 		}
 	}
 }
