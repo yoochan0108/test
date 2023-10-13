@@ -14,14 +14,13 @@
 		}
 
 		#mailBox {
-			border: 1px solid #000;
-			width: 50%;
+			width: 60%;
+			padding: 20px;
 			// // margin-bottom: 100px;
 			// background-color: ivory;
 
 			.upper {
-				// width: 100%;
-				// margin-bottom: 50px;
+				margin-bottom: 50px;
 
 				span {
 					// width: 48%;
@@ -29,25 +28,21 @@
 					// flex-wrap: wrap;
 
 					label {
-						// display: flex;
-						// font: bold 1rem/1 'arial';
-						// color: #555;
-						// margin-right: 20px;
-						// margin-left: 5px;
-						// position: relative;
-						// top: 8px;
+						display: flex;
+						font: bold 1rem/1 'arial';
+						color: #555;
+						padding: 20px;
 					}
 					input[type='text'],
 					input[type='email'] {
-						// width: 1250px;
-						// margin-top: 10px;
-						// border: none;
-						// padding: 10px 20px;
-						// border: 1px solid #555;
-						// margin-right: 50px;
-						// margin-left: 5px;
-						// outline: none;
-						// transition: 0.5s;
+						display: block;
+						width: 100%;
+						border: none;
+						padding: 10px 20px;
+						border-bottom: 1px solid #555;
+						margin-right: 50px;
+						outline: none;
+						background: none;
 
 						&:focus {
 							background: lightcyan;
@@ -56,26 +51,25 @@
 				}
 			}
 			.lower {
-				// width: 100%;
+				width: 100%;
 				// margin-bottom: 10px;
 
 				label {
-					// display: block;
-					// margin-bottom: 5px;
-					// margin-left: 5px;
-					// font: bold 1rem/1 'arial';
-					// color: #555;
+					display: block;
+					margin-bottom: 5px;
+					margin-left: 20px;
+					font: bold 1rem/1 'arial';
+					color: #555;
 				}
 				textarea {
-					// width: 576px;
-					// padding: 10px;
-					// border: none;
-					// border: 1px solid #000;
-					// margin-right: 50px;
-					// margin-left: 5px;
-					// resize: none;
-					// outline: none;
-					// transition: 0.5s;
+					display: block;
+					width: 100%;
+					border: none;
+					padding: 10px 20px;
+					border-bottom: 1px solid #555;
+					margin-right: 50px;
+					outline: none;
+					background: none;
 					&:focus {
 						background: lightcyan;
 					}
@@ -83,22 +77,7 @@
 			}
 
 			.btnSet {
-				// width: 46%;
-				// padding-right: 20px;
-				// display: flex;
-				// justify-content: right;
-
 				input {
-					// margin: 5px;
-					// padding: 5px;
-					// display: block;
-					// height: 30px;
-					// background: transparent;
-					// border: 1px solid #666;
-					// font: 1rem/40px 'arial';
-					// color: #555;
-					// text-align: center;
-					// background-color: rgb(232, 189, 110);
 				}
 			}
 		}
