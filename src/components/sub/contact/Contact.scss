@@ -3,6 +3,9 @@
 	.mainconteiner {
 		display: flex;
 		flex-direction: row-reverse;
+		justify-content: space-around;
+		justify-content: left;
+		margin-bottom: 40px;
 		article {
 			p {
 				padding-left: 40px;
@@ -11,11 +14,8 @@
 		}
 
 		#mailBox {
-			// display: flex;
-			// // flex-wrap: wrap;
-			// // align-content: space-around;
-			// border: 1px solid #000;
-			// width: 50%;
+			border: 1px solid #000;
+			width: 50%;
 			// // margin-bottom: 100px;
 			// background-color: ivory;
 
