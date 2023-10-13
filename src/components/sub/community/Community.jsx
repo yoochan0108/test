@@ -21,6 +21,7 @@ export default function Community() {
 		resetForm();
 	};
 	const deletePost = (delIndex) => {
+		//기존에 Posts배열을 반복 돌면서 인수로 전달된 삭제 순번값과 현재 반복되는 배열의 순번값이 같지 않은 것만 리턴
 		setPosts(Posts.filter((_, idx) => delIndex === idx));
 	};
 
