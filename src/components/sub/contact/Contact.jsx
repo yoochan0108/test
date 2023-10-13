@@ -176,6 +176,12 @@ export default function Contact() {
 				</form>
 			</div>
 
+			<div className='text'>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio nam quas ex iste, nobis
+				deleniti neque esse voluptates numquam sapiente libero vero obcaecati error dolor odio sint
+				beatae quia qui?
+			</div>
+
 			<div id='mapBox'>
 				<button onClick={() => setTraffic(!Traffic)}>
 					{Traffic ? '교통정보 끄기' : '교통정보 켜기'}
@@ -204,6 +210,9 @@ export default function Contact() {
 						</li>
 					))}
 				</ul>
+			</div>
+			<div className='FAQ'>
+				<h2>F.A.Q</h2>
 			</div>
 		</Layout>
 	);

@@ -8,6 +8,7 @@ import Members from './components/sub/members/Members';
 import Gallery from './components/sub/gallery/Gallery';
 import Contact from './components/sub/contact/Contact';
 import Detail from './components/sub/youtube/Detail';
+import Community from './components/sub/community/Community';
 
 function App() {
 	return (
@@ -25,7 +26,9 @@ function App() {
 			<Route path='/youtube' component={Youtube} />
 			<Route path='/members' component={Members} />
 			<Route path='/contact' component={Contact} />
+			<Route path='/community' component={Community} />
 			<Route path='/detail/:id' component={Detail} />
+
 			{/* params는 url에 특정 컴포넌트를 연결할때 url로 정보값을 값이 전달 경로/:변수명 */}
 		</>
 	);

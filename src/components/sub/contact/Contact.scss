@@ -1,35 +1,39 @@
 .Contact {
-	figure {
-		background: orange;
-	}
-
 	#mailBox {
-		border: 1px solid red;
+		display: flex;
+		flex-wrap: wrap;
+		align-content: space-around;
+		border: 1px solid #000;
 		width: 50%;
 		margin-bottom: 100px;
 
 		.upper {
 			width: 100%;
-			display: flex;
 			margin-bottom: 50px;
-			justify-content: space-between;
 
 			span {
 				width: 48%;
+				display: flex;
+				flex-wrap: wrap;
 
 				label {
+					display: flex;
 					font: bold 1rem/1 'arial';
 					color: #555;
 					margin-right: 20px;
+					margin-left: 5px;
 					position: relative;
-					top: 20px;
+					top: 8px;
 				}
 				input[type='text'],
 				input[type='email'] {
+					width: 1250px;
+					margin-top: 10px;
 					border: none;
 					padding: 10px 20px;
-					border-bottom: 1px solid #555;
+					border: 1px solid #555;
 					margin-right: 50px;
+					margin-left: 5px;
 					outline: none;
 					transition: 0.5s;
 
@@ -46,15 +50,17 @@
 			label {
 				display: block;
 				margin-bottom: 5px;
+				margin-left: 5px;
 				font: bold 1rem/1 'arial';
 				color: #555;
 			}
 			textarea {
-				width: 100%;
+				width: 576px;
 				padding: 10px;
 				border: none;
-				border-bottom: 1px solid #555;
+				border: 1px solid #000;
 				margin-right: 50px;
+				margin-left: 5px;
 				resize: none;
 				outline: none;
 				transition: 0.5s;
@@ -65,12 +71,14 @@
 		}
 
 		.btnSet {
-			width: 100%;
+			width: 46%;
 			padding-right: 20px;
 			display: flex;
-			gap: 50px;
+			justify-content: right;
 
 			input {
+				margin: 5px;
+				padding: 5px;
 				display: block;
 				height: 40px;
 				background: transparent;
@@ -78,20 +86,21 @@
 				font: 1rem/40px 'arial';
 				color: #555;
 				text-align: center;
+				background-color: rgb(232, 189, 110);
 			}
 		}
 	}
 
 	.container {
 		width: 100%;
-		height: 60vh;
-		background: #111;
+		height: 50vh;
+		// background: #111;
 		position: relative;
 
 		.map,
 		.view {
 			width: 100%;
-			height: 100%;
+			height: 50vh;
 			background: #111;
 			position: absolute;
 			top: 0;
@@ -113,10 +122,14 @@
 		li {
 			cursor: pointer;
 		}
-
 		li.on {
 			color: hotpink;
 		}
+	}
+	.FAQ {
+		margin-top: 40px;
+		margin-bottom: 40px;
+		text-align: center;
 	}
 }
 
