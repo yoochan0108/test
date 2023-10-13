@@ -150,34 +150,38 @@ export default function Contact() {
 
 	return (
 		<Layout title={'Contact'}>
-			<div className='textBox'>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio nam quas ex iste, nobis
-				deleni
-			</div>
-			<div id='mailBox'>
-				<form ref={form} onSubmit={sendEmail}>
-					<div className='upper'>
-						<span>
-							<label>Name</label>
-							<input type='text' name='user_name' className='nameEl' />
-						</span>
+			<div className='mainconteiner'>
+				<article>
+					<p>email Us</p>
+					<p>call Us</p>
+					<p>Good Day</p>
+					<p></p>
+				</article>
+				<div id='mailBox'>
+					<form ref={form} onSubmit={sendEmail}>
+						<div className='upper'>
+							<span>
+								<label>Name</label>
+								<input type='text' name='user_name' className='nameEl' />
+							</span>
 
-						<span>
-							<label>Email</label>
-							<input type='email' name='user_email' className='emailEl' />
-						</span>
-					</div>
+							<span>
+								<label>Email</label>
+								<input type='email' name='user_email' className='emailEl' />
+							</span>
+						</div>
 
-					<div className='lower'>
-						<label>Message</label>
-						<textarea name='message' className='msgEl' />
-					</div>
+						<div className='lower'>
+							<label>Message</label>
+							<textarea name='message' className='msgEl' />
+						</div>
 
-					<div className='btnSet'>
-						<input type='reset' value='Cancel' />
-						<input type='submit' value='Send' />
-					</div>
-				</form>
+						<div className='btnSet'>
+							<input type='reset' value='Cancel' />
+							<input type='submit' value='Send' />
+						</div>
+					</form>
+				</div>
 			</div>
 
 			<div id='mapBox'>
