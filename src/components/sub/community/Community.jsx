@@ -1,13 +1,21 @@
 import Layout from '../../common/layout/Layout';
 import './Community.scss';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 export default function Community() {
+	//로컬데이터의 값을 parsing해서 반환하는 함수
+	const getLocalData = () => {
+		const data = localStorage.getItem('post');
+		if (data) return JSON.parse(data);
+		else return [];
+	};
 	const refInput = useRef(null);
 	const refTextarea = useRef(null);
 	const refEditInput = useRef(null);
 	const refEditTextarea = useRef(null);
-	const [Posts, setPosts] = useState([]);
+	//해당 컴포넌트가 처음 마운트시에는 로컬저장소에 값이 없기 때문에 빈배열 리턴
+	//저장소에 값이 있으면 해당값을 parsing된 데이터가 있는 배열값을 리턴
+	const [Posts, setPosts] = useState(getLocalData());
 	const [Allowed, setAllowed] = useState(true);
 	console.log(Posts);
 
@@ -21,7 +29,14 @@ export default function Community() {
 			return alert('제목과 본문을 모두 입력하세요.');
 		}
 		//기존 Posts 배열값을 Deep copy해서 가져온뒤, 그 뒤에 추가로 방금 입력한 객체를 배열에 추가
-		setPosts([{ title: refInput.current.value, content: refTextarea.current.value }, ...Posts]);
+		setPosts([
+			{
+				title: refInput.current.value,
+				content: refTextarea.current.value,
+				data: new Date(),
+			},
+			...Posts,
+		]);
 		resetForm();
 	};
 
@@ -74,6 +89,10 @@ export default function Community() {
 		);
 	};
 
+	useEffect(() => {
+		localStorage.setItem('post', JSON.stringify(Posts));
+	}, [Posts]);
+
 	return (
 		<Layout title={'Community'}>
 			<div className='inputBox'>
@@ -89,6 +108,8 @@ export default function Community() {
 
 			<div className='showBox'>
 				{Posts.map((post, idx) => {
+					console.log(post.data);
+					const [year, month, date] = post.data.split('T')[0].split('-');
 					if (post.enableUpdate) {
 						//수정 모드 렌더링
 						return (
@@ -118,11 +139,13 @@ export default function Community() {
 						);
 					} else {
 						//출력 모드 렌더링
+
 						return (
 							<article key={idx}>
 								<div className='txt'>
 									<h2>{post.title}</h2>
 									<p>{post.content}</p>
+									<p>{`${year}-${month}-${date}`}</p>
 								</div>
 
 								<nav className='btnSet'>
@@ -145,4 +168,12 @@ export default function Community() {
   Delete : 게시글 삭제
 
   localStorage : 모든 브라우저가 가지고 있는 경량의 저장소 (문자열: 5MB)
+
+  로컬저장소에 데이터 저장
+  localStorage.setItem({key: 'value'}); 
+  객체를 문자화시켜서 저장
+
+  로컬저장소에 데이터 가져옴
+  localStorage.getItem(key)
+  문자화되어있는 객체를 다시 parsing해서 호출
 */
