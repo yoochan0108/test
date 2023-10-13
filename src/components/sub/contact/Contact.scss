@@ -138,17 +138,24 @@
 	}
 	.container {
 		article {
+			margin-top: 40px;
 			display: flex;
-			margin-bottom: 20px;
-			margin-top: 20px;
+			flex-wrap: wrap;
+			display: inline-block;
+			padding: 20px;
 		}
 	}
+	.nextBox {
+		.lap {
+			margin-bottom: 20px;
+		}
+	}
+}
 
-	@media screen and (max-width: 1399px) {
-		.Contact {
-			#mailBox {
-				width: 100%;
-			}
+@media screen and (max-width: 1399px) {
+	.Contact {
+		#mailBox {
+			width: 100%;
 		}
 	}
 }

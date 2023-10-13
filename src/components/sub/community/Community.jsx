@@ -8,6 +8,7 @@ export default function Community() {
 	const refEditInput = useRef(null);
 	const refEditTextarea = useRef(null);
 	const [Posts, setPosts] = useState([]);
+	const [Allowed, setAllowed] = useState(true);
 	console.log(Posts);
 
 	const resetForm = () => {
@@ -31,6 +32,10 @@ export default function Community() {
 
 	//해당 글을 수정모드로 변경시키는 함수
 	const enableUpdate = (editIndex) => {
+		//수정모드 함수 호출시 Allowed가 true가 아니면 return으로 함수 강제 종료
+		if (!Allowed) return;
+		//일단 수정모드에 진입하면 강제로 Allowed값을 false로 변경해서 다른 글 수정모드 진입금지 처리
+		setAllowed(false);
 		setPosts(
 			//Posts 배열값을 반복돌면서 인수로 전달된 수정할 포스트의 순번값과 현재 반복도는 배열의 포스트 순번값이 일치하면
 			//해당 글을 수정처리해야되므로 해당 객체에 enableUpdate=true값을 추가
@@ -43,6 +48,7 @@ export default function Community() {
 
 	//해당 글을 출력모드로 변경시키는 함수
 	const disableUpdate = (editIndex) => {
+		setAllowed(true);
 		setPosts(
 			Posts.map((post, idx) => {
 				if (editIndex === idx) post.enableUpdate = false;

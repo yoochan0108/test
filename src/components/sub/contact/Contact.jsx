@@ -211,13 +211,59 @@ export default function Contact() {
 			</div>
 			<div className='FAQ'>
 				<h2>F.A.Q</h2>
+
 				<div className='container'>
-					<article>Lorem ipsum dolor sit amet consectetur</article>
-					<article>Lorem ipsum dolor sit amet consectetur</article>
-					<article>Lorem ipsum dolor sit amet consectetur</article>
-					<article>Lorem ipsum dolor sit amet consectetur</article>
-					<article>Lorem ipsum dolor sit amet consectetur</article>
-					<article>Lorem ipsum dolor sit amet consectetur</article>
+					<article>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, dolorem!
+							<br /> Lorem ipsum dolor sit amet consectetur.
+						</p>
+					</article>
+					<article>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, dolorem!
+							<br /> Lorem ipsum dolor sit amet consectetur.
+						</p>
+					</article>
+					<article>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, dolorem!
+							<br /> Lorem ipsum dolor sit amet consectetur.
+						</p>
+					</article>
+					<article>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, dolorem!
+							<br /> Lorem ipsum dolor sit amet consectetur.
+						</p>
+					</article>
+					<article>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, dolorem!
+							<br /> Lorem ipsum dolor sit amet consectetur.
+						</p>
+					</article>
+					<article>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, dolorem!
+							<br /> Lorem ipsum dolor sit amet consectetur.
+						</p>
+					</article>
+				</div>
+
+				<div className='nextBox'>
+					<article className='lap'>
+						<p>Lorem ipsum</p>
+						<span>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</span>
+					</article>
+					<article className='lap'>
+						<p>Lorem ipsum</p>
+						<span>Lorem ipsum, dolor sit amet consectetur </span>
+					</article>
+					<article className='lap'>
+						<p>Lorem ipsum</p>
+						<span>Lorem ipsum, dolor</span>
+					</article>
 				</div>
 			</div>
 		</Layout>
