@@ -152,10 +152,14 @@ export default function Contact() {
 		<Layout title={'Contact'}>
 			<div className='mainconteiner'>
 				<article>
-					<p>email Us</p>
-					<p>call Us</p>
-					<p>Good Day</p>
-					<p></p>
+					<p>
+						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam maxime at laboriosam.
+					</p>
+					<p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam maxime at</p>
+					<p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam</p>
+					<p> Lorem ipsum, dolor sit amet consectetur adipisicing </p>
+					<p> Lorem ipsum, dolor sit amet consectetur </p>
+					<p> Lorem ipsum, dolor sit </p>
 				</article>
 				<div id='mailBox'>
 					<form ref={form} onSubmit={sendEmail}>
