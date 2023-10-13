@@ -2,11 +2,12 @@ import './News.scss';
 import { useState } from 'react';
 
 function News() {
-	const getLocalDate = () => {
+	const getLocalData = () => {
 		const data = localStorage.getItem('post');
 		return JSON.parse(data);
 	};
-	const [Post, setPost] = useState(getLocalDate());
+	const [Post] = useState(getLocalData());
+
 	return (
 		<section className='news'>
 			<h2>News</h2>
