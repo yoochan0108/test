@@ -8,6 +8,7 @@ export default function Members() {
 		pwd1: '',
 		pwd2: '',
 		email: '',
+		gender: false,
 	};
 	const [Val, setVal] = useState(initVal);
 	const [Errs, setErrs] = useState({});
@@ -17,6 +18,11 @@ export default function Members() {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setVal({ ...Val, [name]: value });
+	};
+
+	const handleRadio = (e) => {
+		const { name, checked } = e.target;
+		setVal({ ...Val, [name]: checked });
 	};
 
 	//인수값으로 state를 전달받아서 각 데이터별로 인증처리후
@@ -61,6 +67,10 @@ export default function Members() {
 			}
 		}
 
+		// 성별 인증
+		if (!value.gender) {
+			errs.gender = '성별을 하나이상 체크해주세요';
+		}
 		return errs;
 	};
 
@@ -151,6 +161,18 @@ export default function Members() {
 								</td>
 							</tr>
 
+							{/* gender */}
+							<tr>
+								<th>gender</th>
+								<td>
+									<label htmlFor='female'>female</label>
+									<input type='radio' name='gender' id='femaile' onChange={handleRadio} />
+
+									<label htmlFor='mail'>mail</label>
+									<input type='radio' name='gender' id='femaile' onChange={handleRadio} />
+									{Errs.gender && <p>{Errs.gender}</p>}
+								</td>
+							</tr>
 							{/* btnSet */}
 							<tr>
 								<th colSpan='2'>
