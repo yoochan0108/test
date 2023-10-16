@@ -11,6 +11,7 @@ export default function Members() {
 		gender: false,
 		interests: false,
 		edu: '',
+		comments: '',
 	};
 	const [Val, setVal] = useState(initVal);
 	const [Errs, setErrs] = useState({});
@@ -88,6 +89,10 @@ export default function Members() {
 		//학력 인증
 		if (!value.edu) {
 			errs.edu = '학력을 선택하세요.';
+		}
+		//남기는말 인증
+		if (value.comments.length < 10) {
+			errs.comments = '남기는말은 10글자 이상 입력하세요.';
 		}
 		return errs;
 	};
@@ -219,6 +224,24 @@ export default function Members() {
 										<option value='college'>대학교 졸업</option>
 									</select>
 									{Errs.edu && <p>{Errs.edu}</p>}
+								</td>
+							</tr>
+
+							{/* comments */}
+							<tr>
+								<th>
+									<label htmlFor='comments'>comments</label>
+								</th>
+								<td>
+									<textarea
+										name='comments'
+										id=''
+										cols='30'
+										rows='3'
+										value={Val.comments}
+										onChange={handleChange}
+									></textarea>
+									{Errs.comments && <p>{Errs.comments}</p>}
 								</td>
 							</tr>
 
