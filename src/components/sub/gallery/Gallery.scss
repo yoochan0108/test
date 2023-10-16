@@ -1,6 +1,7 @@
 @import '../../../styles/Variable.scss';
 
 .Gallery {
+	background-color: #7e8f6a;
 	.picFrame {
 		width: 100%;
 
@@ -16,9 +17,9 @@
 
 		article {
 			display: flex;
-			justify-content: space-between;
-			width: 300px;
+			width: 20%;
 			padding: 10px;
+			object-fit: cover;
 
 			.inner {
 				width: 100%;
