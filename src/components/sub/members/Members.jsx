@@ -32,6 +32,35 @@ export default function Members() {
 		if (value.pwd1 < 5 || !num.test(value.pwd1) || !txt.test(value.pwd1) || !spc.test(value.pwd1)) {
 			errs.pwd1 = '비밀번호는 5글자이상, 문자, 숫자, 특수문자를 모두 포함하세요';
 		}
+
+		//비밀번호 재확인 인증
+		if (value.pwd1 !== value.pwd2) {
+			errs.pwd2 = '2개의 비밀번호를 같게 입력하세요.';
+		}
+
+		//이메일 인증
+
+		if (!value.email || !/@/.test(value.email)) {
+			errs.email = '이메일은 무조건 @를 포함해야 합니다.';
+		} else {
+			const [forward, backward] = value.email.split('@');
+			if (!forward || !backward) {
+				errs.email = '이메일 @앞뒤로 문자값이 있어야 합니다';
+			} else {
+				const [forward, backward] = value.email.split('.');
+				if (!forward || !backward) {
+					errs.email = '이메일 .앞뒤로 문자값이 있어야 합니다';
+				}
+			}
+			if (!value.email.split('@')[0] || !value.email.split('@')[1]) {
+				errs.email = '이메일에 @앞뒤로 문자값이 있어야 합니다.';
+			} else {
+				if (!value.email.split('@')[1].split('.')[0] || !value.email.split('@')[1].split('.')[1]) {
+					errs.email = '이메일 . 앞뒤로 문자값이 있어야 합니다.';
+				}
+			}
+		}
+
 		return errs;
 	};
 
