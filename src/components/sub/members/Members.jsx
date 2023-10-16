@@ -16,7 +16,10 @@ export default function Members() {
 	const [Val, setVal] = useState(initVal);
 	const [Errs, setErrs] = useState({});
 
-	console.log(Errs);
+	const resetForm = (e) => {
+		e.preventDefault();
+		setVal(initVal);
+	};
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -99,6 +102,7 @@ export default function Members() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		if (Object.keys(check(Val)).length === 0) {
 			alert('인증통과');
 		} else {
@@ -248,7 +252,7 @@ export default function Members() {
 							{/* btnSet */}
 							<tr>
 								<th colSpan='2'>
-									<input type='reset' value='cancel' />
+									<input type='reset' value='cancel' onClick={resetForm} />
 									<input type='submit' value='send' />
 								</th>
 							</tr>
