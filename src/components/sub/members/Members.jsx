@@ -5,7 +5,7 @@ export default function Members() {
 	return (
 		<Layout title={'Members'}>
 			<form action=''>
-				<legend>회원가입 폼 양식</legend>
+				<legend className='h'>회원가입 폼 양식</legend>
 				<table border='1'>
 					<body>
 						{/* userid */}
@@ -34,6 +34,13 @@ export default function Members() {
 							<td>
 								<input type='re-password' id='pwd2' name='pwd2' />
 							</td>
+						</tr>
+						{/* btnSet */}
+						<tr>
+							<th colSpan='2'>
+								<input type='reset' Value='cancel' />
+								<input type='submit' value='send' />
+							</th>
 						</tr>
 					</body>
 				</table>
