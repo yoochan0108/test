@@ -26,6 +26,8 @@
 			font-size: 100px;
 
 			//grid-area: 행의 시작위치, 열의 시작위치, 행 병합수, 열 병합수
+			//grid-area의 순서값은 화면상의 박스 위치를 지정
+			//nth-of-type 화면위치에 어떤 컨텐츠를 집어넣을지 순서지정
 			&:nth-of-type(1) {
 				grid-area: 1/1 / span 1 / span 2;
 			}
