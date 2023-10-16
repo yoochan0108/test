@@ -9,6 +9,7 @@ export default function Members() {
 		pwd2: '',
 		email: '',
 		gender: false,
+		interests: false,
 	};
 	const [Val, setVal] = useState(initVal);
 	const [Errs, setErrs] = useState({});
@@ -25,8 +26,14 @@ export default function Members() {
 		setVal({ ...Val, [name]: checked });
 	};
 
-	//인수값으로 state를 전달받아서 각 데이터별로 인증처리후
-	//만약 인증에러가 발생하면 해당 name값으로 에러문구를 생성해서 반환하는 함수
+	const handleCheck = (e) => {
+		const { name } = e.target;
+		let isChecked = false;
+		const inputs = e.target.parentElement.querySelectorAll('input');
+		inputs.forEach((input) => input.checked && (isChecked = true));
+		setVal({ ...Val, [name]: isChecked });
+	};
+
 	const check = (value) => {
 		const num = /[0-9]/; //0-9까지의 모든 값을 정규표현식으로 범위지정
 		const txt = /[a-zA-Z]/; //대소문자 구분없이 모든 문자 범위지정
@@ -67,16 +74,18 @@ export default function Members() {
 			}
 		}
 
-		// 성별 인증
+		//성별인증
 		if (!value.gender) {
-			errs.gender = '성별을 하나이상 체크해주세요';
+			errs.gender = '성별은 필수 체크항목입니다.';
+		}
+
+		//관심사인증
+		if (!value.interests) {
+			errs.interests = '관심사를 하나이상 체크해주세요.';
 		}
 		return errs;
 	};
 
-	//전송이벤트 발생시 state에 있는 인풋값들을 check함수에 전달해서 호출
-	//만약 check함수가 에러객체를 하나도 내보내지 않으면 인증성공
-	//하나라도 에러객체가 전달되면 인증실패처리하면서 name값과 매칭이 되는 input요소 아래쪽에 에러메세지 출력
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (Object.keys(check(Val)).length === 0) {
@@ -166,13 +175,30 @@ export default function Members() {
 								<th>gender</th>
 								<td>
 									<label htmlFor='female'>female</label>
-									<input type='radio' name='gender' id='femaile' onChange={handleRadio} />
+									<input type='radio' name='gender' id='female' onChange={handleRadio} />
 
-									<label htmlFor='mail'>mail</label>
-									<input type='radio' name='gender' id='femaile' onChange={handleRadio} />
+									<label htmlFor='male'>male</label>
+									<input type='radio' name='gender' id='male' onChange={handleRadio} />
 									{Errs.gender && <p>{Errs.gender}</p>}
 								</td>
 							</tr>
+
+							{/* interests */}
+							<tr>
+								<th>interests</th>
+								<td>
+									<label htmlFor='sports'>sports</label>
+									<input type='checkbox' id='sports' name='interests' onChange={handleCheck} />
+
+									<label htmlFor='game'>game</label>
+									<input type='checkbox' id='game' name='interests' onChange={handleCheck} />
+
+									<label htmlFor='music'>music</label>
+									<input type='checkbox' id='music' name='interests' onChange={handleCheck} />
+									{Errs.interests && <p>{Errs.interests}</p>}
+								</td>
+							</tr>
+
 							{/* btnSet */}
 							<tr>
 								<th colSpan='2'>
