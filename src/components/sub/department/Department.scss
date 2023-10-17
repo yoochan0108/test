@@ -1,34 +1,4 @@
 .Department {
-	// .historyBox {
-	// 	margin: 100px 0px;
-	// 	article {
-	// 		width: 100%;
-	// 		display: flex;
-	// 		flex-wrap: wrap;
-	// 		padding: 50px 0px;
-	// 		justify-content: space-between;
-	// 		position: relative;
-
-	// 		.line {
-	// 			position: absolute;
-	// 			top: 0;
-	// 			left: 35%;
-	// 			width: 1px;
-	// 			height: 1px;
-	// 			background: #555;
-	// 		}
-
-	// 		h2 {
-	// 			width: 30%;
-	// 			text-align: right;
-	// 		}
-	// 		ul {
-	// 			width: 65%;
-	// 			padding-left: 50px;
-	// 		}
-	// 	}
-	// }
-
 	.memberBox {
 		text-align: center;
 		display: flex;
@@ -88,6 +58,18 @@
 				padding-left: 20px;
 				padding-right: 20px;
 			}
+		}
+	}
+}
+
+//
+.tablet,
+.mobile {
+	.Department {
+		.memberBox {
+			text-align: center;
+			display: flex;
+			flex-wrap: wrap;
 		}
 	}
 }
