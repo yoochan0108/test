@@ -1,5 +1,3 @@
-@import '/src/styles/Variable.scss';
-
 .header {
 	width: 100%;
 	padding: 3vh 10vw;
@@ -36,12 +34,14 @@
 	h1 {
 		color: hotpink;
 	}
-}
-
-@media screen and (max-width: $tablet) {
-	.header {
-		ul {
-			display: none;
+	.tablet {
+		.header {
+			ul {
+				display: none;
+			}
+			.bars {
+				display: block;
+			}
 		}
 	}
 }

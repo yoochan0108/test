@@ -133,7 +133,7 @@ export default function Members() {
 							{/* userid */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='userid'>userid</label>
+									<label htmlFor='userid'>Userid</label>
 								</th>
 								<td>
 									<input
@@ -150,7 +150,7 @@ export default function Members() {
 							{/* password */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='pwd1'>password</label>
+									<label htmlFor='pwd1'>Password</label>
 								</th>
 								<td>
 									<input
@@ -167,7 +167,7 @@ export default function Members() {
 							{/* re password */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='pwd2'>re-password</label>
+									<label htmlFor='pwd2'>RE-Password</label>
 								</th>
 								<td>
 									<input
@@ -184,7 +184,7 @@ export default function Members() {
 							{/* email */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='email'>e-mail</label>
+									<label htmlFor='email'>E-mail</label>
 								</th>
 								<td>
 									<input
@@ -202,10 +202,10 @@ export default function Members() {
 							<tr>
 								<th>gender</th>
 								<td ref={refRadioGroup}>
-									<label htmlFor='female'>female</label>
+									<label htmlFor='female'>Female</label>
 									<input type='radio' name='gender' id='female' onChange={handleRadio} />
 
-									<label htmlFor='male'>male</label>
+									<label htmlFor='male'>Male</label>
 									<input type='radio' name='gender' id='male' onChange={handleRadio} />
 									{Errs.gender && <p>{Errs.gender}</p>}
 								</td>
@@ -215,13 +215,13 @@ export default function Members() {
 							<tr>
 								<th>interests</th>
 								<td ref={refCheckGroup}>
-									<label htmlFor='sports'>sports</label>
+									<label htmlFor='sports'>Sports</label>
 									<input type='checkbox' id='sports' name='interests' onChange={handleCheck} />
 
-									<label htmlFor='game'>game</label>
+									<label htmlFor='game'>Game</label>
 									<input type='checkbox' id='game' name='interests' onChange={handleCheck} />
 
-									<label htmlFor='music'>music</label>
+									<label htmlFor='music'>Music</label>
 									<input type='checkbox' id='music' name='interests' onChange={handleCheck} />
 									{Errs.interests && <p>{Errs.interests}</p>}
 								</td>
@@ -247,7 +247,7 @@ export default function Members() {
 							{/* comments */}
 							<tr>
 								<th>
-									<label htmlFor='comments'>comments</label>
+									<label htmlFor='comments'>Comments</label>
 								</th>
 								<td>
 									<textarea

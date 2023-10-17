@@ -1,19 +1,23 @@
 .Community {
+	background-color: #e1e1e1;
 	.content {
 		.inputBox {
 			width: 100%;
-			border: 1px solid #aaa;
+			border-bottom: 1px solid #aaa;
+			border-top: 1px solid #aaa;
 			padding: 50px;
 			margin-bottom: 50px;
+			background-color: #fff;
 
 			input[type='text'],
 			textarea {
+				border: none;
 				width: 50%;
 				padding: 8px 10px;
-				border: 1px solid #aaa;
+				border-bottom: 1px solid #aaa;
 				resize: none;
 				margin-bottom: 10px;
-				background: #f0fdff;
+				background: #efefef;
 			}
 
 			.btnSet {
@@ -23,7 +27,7 @@
 					display: inline-block;
 					border: none;
 					background: #555;
-					margin-right: 20px;
+					margin-left: 70px;
 					color: #fff;
 					cursor: pointer;
 				}
@@ -33,16 +37,30 @@
 		.showBox {
 			width: 100%;
 			border: 1px solid #aaa;
-			padding: 50px;
+			padding-left: 20px;
+			margin-top: 20px;
+			background-color: #ffffff;
+			display: flex;
+			flex-wrap: wrap;
 
 			article {
-				background: #fff;
+				height: 15vw;
+				background: #ffffff;
 				padding: 30px;
-				margin-bottom: 40px;
+				margin-top: 20px;
+				margin-bottom: 20px;
+				margin-right: 20px;
 				display: flex;
-				justify-content: space-between;
-				align-content: center;
-				flex-wrap: wrap;
+				justify-content: center;
+				border: 1px solid #000;
+				cursor: pointer;
+				transition: 0.5s;
+
+				&:hover {
+					opacity: 0.5;
+					transform: translateY(0.8px);
+					transform: scale(1.02);
+				}
 
 				.txt {
 					width: 88%;
@@ -57,16 +75,14 @@
 						border: 1px solid #aaa;
 						resize: none;
 						margin-bottom: 10px;
-						background: #f0fdff;
+						background: #efefef;
 					}
 				}
 				.btnSet {
-					width: 100%;
 					display: flex;
-					gap: 20px;
-					align-items: center;
-					justify-content: flex-end;
-
+					flex-wrap: wrap;
+					margin-top: 150px;
+					gap: 20%;
 					button {
 						border: none;
 						background: transparent;
