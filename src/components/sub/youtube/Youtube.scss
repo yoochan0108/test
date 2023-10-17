@@ -46,3 +46,28 @@
 		}
 	}
 }
+.tablet {
+	.Youtube {
+		.content {
+			article {
+				flex-wrap: wrap;
+				&:hover {
+					opacity: 0.5;
+					transform: translateY(0.8px);
+					transform: scale(1.1);
+				}
+
+				.titBox {
+				}
+				.conBox {
+					p {
+					}
+				}
+				.picBox {
+					img {
+					}
+				}
+			}
+		}
+	}
+}
