@@ -67,9 +67,10 @@
 .mobile {
 	.Department {
 		.memberBox {
+			width: 100%;
 			text-align: center;
 			display: flex;
-			flex-wrap: wrap;
+			justify-content: space-around;
 		}
 	}
 }
