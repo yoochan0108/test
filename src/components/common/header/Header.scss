@@ -6,7 +6,8 @@
 
 	h1 {
 		font-size: 1.5rem;
-		color: #333;
+		//color: #333;
+		color: var(--color1);
 	}
 
 	ul {
@@ -22,6 +23,10 @@
 			}
 		}
 	}
+
+	.bars {
+		display: none;
+	}
 }
 
 .header.main {
@@ -34,14 +39,16 @@
 	h1 {
 		color: hotpink;
 	}
-	.tablet {
-		.header {
-			ul {
-				display: none;
-			}
-			.bars {
-				display: block;
-			}
+}
+
+.tablet,
+.mobile {
+	.header {
+		ul {
+			display: none;
+		}
+		.bars {
+			display: block;
 		}
 	}
 }
