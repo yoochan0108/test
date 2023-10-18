@@ -1,13 +1,21 @@
+//해당 페이지에서 설명해보라, 혹시 이슈사항은 없었는지?
+
 import Layout from '../../common/layout/Layout';
 import './Community.scss';
 import { useRef, useState, useEffect } from 'react';
 
 export default function Community() {
+	const dummyData = [
+		{ title: 'title', content: 'Here comes content description in detaill.', data: new Date() },
+		{ title: 'title', content: 'Here comes content description in detaill.', data: new Date() },
+		{ title: 'title', content: 'Here comes content description in detaill.', data: new Date() },
+		{ title: 'title', content: 'Here comes content description in detaill.', data: new Date() },
+	];
 	//로컬데이터의 값을 parsing해서 반환하는 함수
 	const getLocalData = () => {
 		const data = localStorage.getItem('post');
 		if (data) return JSON.parse(data);
-		else return [];
+		else return dummyData;
 	};
 	const refInput = useRef(null);
 	const refTextarea = useRef(null);
@@ -168,19 +176,5 @@ export default function Community() {
 	);
 }
 
-/*
-  Create : 게시글 저장
-  Read : 게시글 보기
-  Update : 게시글 수정
-  Delete : 게시글 삭제
-
-  localStorage : 모든 브라우저가 가지고 있는 경량의 저장소 (문자열: 5MB)
-
-  로컬저장소에 데이터 저장
-  localStorage.setItem({key: 'value'}); 
-  객체를 문자화시켜서 저장
-
-  로컬저장소에 데이터 가져옴
-  localStorage.getItem(key)
-  문자화되어있는 객체를 다시 parsing해서 호출
-*/
+//아직 데이터베이스를 배우진 않았지만 CRUD기능을 구현하고싶어서 로컬저장소를 활용해서 만들어 봤다.
+//이슈사항으로는 시간값을 가져왔는데 로컬 저장소에 글이 저장되는 시점의 시간을 표준시로 저장을 해서 현재시간보다 9시간이 늦은 시간으로 출력되는 문제가 있었다.
