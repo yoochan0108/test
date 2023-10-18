@@ -1,3 +1,10 @@
+/*
+	1 csr방식에 대해서 설명하시오
+	2.react프로젝트에서 public, src 폴더를 통해서 어떤식으로 빌드되면서 화면 렌더링
+	3.ssr방식에 비해 csr방식의 장점과 다점에 대해서 설명
+	
+*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -9,8 +16,6 @@ import flickrReducer from './redux/flickrSlice';
 import modalReducer from './redux/modalSlice';
 import menuReducer from './redux/menuSlice';
 
-//youtubeReducer반환한 데이터를 youtube property담아서 객체형태로 store에 등록
-//store에는 하나의 객체만 등록가능하기 때문에 여러개의 데이터 카테고리는 reducer로 통합해서 등록
 const store = configureStore({
 	reducer: {
 		youtube: youtubeReducer,
@@ -32,18 +37,29 @@ ReactDOM.render(
 );
 
 /*
-	redux (redux-saga, redux-toolkit)
-	- context api를 활용한 전역 state관리 라이브러리
-	- redux로 전역관리를 해야 되는 이유
-	--- 여러 컴포넌트에 자주써야되는 데이터값을 매번 컴포넌트에
-			호출하는 것이 초기에 한번 전역 공간에 저장
-	-- 장점1. 위와 같이 자주쓰는 값들을 전역 state에 저장해놓으면 저장되어 있는 불러오기만 하면
-		 되기 떄문에 유지보수가 편해짐
-	-- 장점2. 특정데이터를 특정 컴포넌트에 종속시켜놓으면 해당 데이터를 수정해야 될때 
-		 일일이	해당 파일을 찾아서 수정해야되는 번거로움, 전역데이터 관리는 컴포넌트 외부에서
-		 독립적으로 데이터를 관리할 수 있기 때문에 유지보수가 수월함
-	-- 장점3. 리엑트는 기본적으로 단방향 데이터 바인딩이기 때문에 하위 뎁스의 컴포넌트 데이터를 상위
-		 컴포넌트나 또다른 컴포넌트에 전달하기 위해서는 엄청나게 많은 중간단계 컴포넌트 거쳐야
-		 되기 때문에 개발구조가 상당히 복잡해짐. 하지만 전역 상태관리를 활용하면 바로 해당
-		 데이터에 접근해서 수정가능
+	1 csr방식에 대해서 설명하시오
+	- Client Side Rendering vs (Server Side Rendering)
+	- 에전 SSR방식은 각 페이지마다 html파일을 직접 만들어놓은뒤 사용자가 url입력시 직접
+	서버에서 각각의 HTML파일을 불러와서 랜더링하는 방식
+	- 사용자가 브라우저에 url입력해서 페이지요청하면 빈 html파일만 서버쪽에서 가져오고 그와동시에
+	JSX를 반환하는 리엑트 컴포넌트를 파일을 같이 불러옴
+	- 리액트 컴포넌트가 모두 종작되면 빈 HTML문서에 동적으로 모든 컴포넌트가 랜더링됨
+	-초기 모든 서브페이지에 대한 파일들을 모두가져와서 url요청에 따라서 미리 가져온 리액트
+	컴포넌트를 바꾸면서 화면을 변경
+
+
+	2.ssr방식에 비해 csr방식의 장점과 다점에 대해서 설명
+	- 초기로딩속도가 SSR방식에 비해서는 오래 걸림
+	- 처음에 빈 HTML파일을 가져오고 모든 리액트 컴포넌트가 마운트되기 전까지 사용자는 빈화면을
+	봐야 되고 --> 검색엔진에 안좋음
+	- 해결방법 (Next.js라는 framework을 이용해서 SSR, CSR방식이 결합된 hydration을 활용)
+	- 해결방식 index.html을 불러오고 동적인 react리액트 컴포넌트 마운트되기 전까지 static
+	데이터를 미리 출력해서 검색엔진 최적화
+
+
+	3.ssr방식에 비해 csr방식의 장점과 다점에 대해서 설명
+	- index.js를 구동파일로 해서 App.js에 있는 모든 컴포넌트를 불러온다음에 내부적으로 내장되어있는
+	webpac이라는 번들러에 의해서 하나의 js파일로 번들링되고 파일이 index.js에 의해서
+	public폴더 안쪽에 있는 index.html에 합치면서 최동 빌드가 완료됨
+	- 그럼 브라우저에서는 빌드완료된 index.html을 읽어서 화면 랜더링
 */
