@@ -277,3 +277,10 @@ export default function Contact() {
 		</Layout>
 	);
 }
+
+/*
+	해당 페이지의 이슈사항은
+	- kakao map api가 리액트버전의 사용구문이 없었기 때문에 cdn방식으로 불러온 api를 리액트에 맞게 변환하는 작업이 힘들었다.
+	- cdn으로 받아서 kakao생성치함수를 컴포넌트 안쪽에서 불러와지지 않는 문제가 있어서 window객체로부터 직접
+	비구조할당으로 뽑아와서 활용했다.
+*/
