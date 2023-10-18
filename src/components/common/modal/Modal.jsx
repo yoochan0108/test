@@ -1,20 +1,23 @@
 import './Modal.scss';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { close } from '../../../redux/modalSlice';
 
-function Modal({ children, setIsModal, setActiveURL }) {
+const Modal = ({ children }) => {
+	const dispatch = useDispatch();
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';
 
 		return () => {
-			document.body.style.overflow = 'auto  ';
+			document.body.style.overflow = 'auto';
 		};
-	});
+	}, []);
 	return (
-		<aside className='Modal'>
+		<aside className='modal'>
 			<div className='con'>{children}</div>
-			<span onClick={() => setIsModal(false)}>close</span>
+			<span onClick={() => dispatch(close())}>close</span>
 		</aside>
 	);
-}
+};
 
 export default Modal;
