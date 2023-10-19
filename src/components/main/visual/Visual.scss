@@ -127,3 +127,32 @@
 		}
 	}
 }
+
+.table,
+.mobile {
+	.visual {
+		.titBox {
+			display: none;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 15vw;
+			z-index: 3;
+
+			ul li {
+				padding: 50px;
+				h3 {
+					font-size: 2rem;
+				}
+				p {
+					display: none;
+				}
+			}
+		}
+
+		.swiper {
+			width: 100%;
+			padding: 15vw;
+		}
+	}
+}
