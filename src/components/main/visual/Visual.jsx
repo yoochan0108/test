@@ -8,12 +8,15 @@ function Visual() {
 
 	return (
 		<section className='visual'>
-			<Swiper>
+			<Swiper slidesPerView={3} spaceBetween={50}>
 				{data.map((vid, idx) => {
 					if (idx >= 5) return null;
 					return (
 						<SwiperSlide key={idx}>
-							<div className='visual'>
+							<div className='inner'>
+								<div className='pic'>
+									<img src={vid.snippet.thumbnails.standard.url} alt={vid.title} />
+								</div>
 								<h2>{vid.snippet.title}</h2>
 							</div>
 						</SwiperSlide>
