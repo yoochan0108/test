@@ -4,15 +4,15 @@
 
 import './Layout.scss';
 import { useEffect, useRef } from 'react';
-import { useSplitText } from '../../../hooks/useSplitText';
+// import { useSplitText } from '../../../hooks/useSplitText';
 
 export default function Layout({ title, children }) {
 	const refFrame = useRef(null);
 	const refTitle = useRef(null);
-	const splitText = useSplitText();
+	// const splitText = useSplitText();
 
 	useEffect(() => {
-		splitText(refTitle, 0.1);
+		// splitText(refTitle, 0.1);
 		setTimeout(() => {
 			refFrame.current.classList.add('on');
 		}, 300);

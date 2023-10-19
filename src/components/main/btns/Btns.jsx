@@ -10,6 +10,7 @@ function Btns() {
 
 	//컴포넌트 마운트시 myScroll클래스의 모든 섹션의 세로위치값을 배열에 저장하는 함수
 	const getPos = () => {
+		pos.current = [];
 		const secs = document.body.querySelectorAll('.myScroll');
 		for (let sec of secs) pos.current.push(sec.offsetTop);
 		console.log(pos.current);
@@ -17,26 +18,28 @@ function Btns() {
 
 	//브라우저 스크롤시 버튼을 반복돌면서 스크롤이 특정 섹션영역을 넘어가면 해당 순번의 버튼 활성화 함수
 	const activation = () => {
-		const btns = refBtns.current.children;
+		const btns = refBtns.current.querySelectorAll('li');
 		const scroll = window.scrollY;
 
-		if (scroll >= pos.current[0]) {
-			for (let btn of btns) btn.classList.remove('on');
-			btns[0].classList.add('on');
-		}
-		if (scroll >= pos.current[1]) {
-			for (let btn of btns) btn.classList.remove('on');
-			btns[1].classList.add('on');
-		}
-		if (scroll >= pos.current[2]) {
-			for (let btn of btns) btn.classList.remove('on');
-			btns[2].classList.add('on');
-		}
+		pos.current.forEach(() => {
+			pos.current.forEach((el, idx) => {
+				if (scroll >= el) {
+					for (let btn of btns) btn.classList.remove('on');
+					btns[idx].classList.add('on');
+				}
+			});
+		});
 	};
 
 	useEffect(() => {
 		getPos();
+		window.addEventListener('resize', getPos);
 		window.addEventListener('scroll', activation);
+
+		return () => {
+			window.removeEventListener('resize', getPos);
+			window.removeEventListener('scroll', activation);
+		};
 	}, []);
 
 	return (
