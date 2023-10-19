@@ -16,7 +16,8 @@ function Visual() {
 						if (idx >= 5) return null;
 						return (
 							<li key={idx} className={idx === Index ? 'on' : ''}>
-								{tit.snippet.title}
+								<h3>{tit.snippet.title}</h3>
+								<button>View Deatil</button>
 							</li>
 						);
 					})}
