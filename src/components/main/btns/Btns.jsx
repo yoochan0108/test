@@ -54,7 +54,11 @@ function Btns() {
 
 		return () => {
 			window.removeEventListener('resize', throttledGetPos);
+			window.addEventListener('resize', modifyPos);
 			window.removeEventListener('scroll', throttledActivation);
+			//만약 스크롤 위치가 최상단으로 이동하지 않은상태에서 페이지 변경시 스크롤위치를 위로 올리기 위해서
+			//해당 컴포넌트 언마운트시 무조건 스크롤 y축을 0으로 이동
+			window.scrollTo(0, 0);
 		};
 	}, []);
 
