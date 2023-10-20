@@ -1,3 +1,4 @@
+import { useDebounce } from '../../../hooks/useDebounce';
 import Layout from '../../common/layout/Layout';
 import './Members.scss';
 import { useState, useRef, useEffect } from 'react';
@@ -19,15 +20,12 @@ export default function Members() {
 	const [Val, setVal] = useState(initVal);
 	const [Errs, setErrs] = useState({});
 
+	const DebouncedVal = useDebounce(Val);
+
 	const resetForm = (e) => {
 		e.preventDefault();
 		setVal(initVal);
-		/*
-		const checks = refCheckGroup.current.querySelectorAll('input');
-		const radios = refRadioGroup.current.querySelectorAll('input');
-		checks.forEach((input) => (input.checked = false));
-		radios.forEach((input) => (input.checked = false));
-    */
+
 		[refCheckGroup, refRadioGroup].forEach((el) =>
 			el.current.querySelectorAll('input').forEach((input) => (input.checked = false))
 		);
@@ -124,12 +122,13 @@ export default function Members() {
 	};
 
 	const showCheck = () => {
-		setErrs(check(Val));
+		setErrs(check(DebouncedVal));
 	};
 
 	useEffect(() => {
+		console.log('Val state값 변경에 의해서 showCheck함수 호출');
 		showCheck();
-	}, [Val]);
+	}, [DebouncedVal]);
 
 	return (
 		<Layout title={'Members'}>
@@ -177,7 +176,7 @@ export default function Members() {
 							{/* re password */}
 							<tr>
 								<th scope='row'>
-									<label htmlFor='pwd2'>RE-Password</label>
+									<label htmlFor='pwd2'>Re-Password</label>
 								</th>
 								<td>
 									<input
@@ -212,12 +211,12 @@ export default function Members() {
 
 							{/* gender */}
 							<tr>
-								<th>gender</th>
+								<th>Gender</th>
 								<td ref={refRadioGroup}>
-									<label htmlFor='female'>Female</label>
+									<label htmlFor='female'>female</label>
 									<input type='radio' name='gender' id='female' onChange={handleRadio} />
 
-									<label htmlFor='male'>Male</label>
+									<label htmlFor='male'>male</label>
 									<input type='radio' name='gender' id='male' onChange={handleRadio} />
 									{Errs.gender && <p>{Errs.gender}</p>}
 								</td>
@@ -225,15 +224,15 @@ export default function Members() {
 
 							{/* interests */}
 							<tr>
-								<th>interests</th>
+								<th>Interests</th>
 								<td ref={refCheckGroup}>
-									<label htmlFor='sports'>Sports</label>
+									<label htmlFor='sports'>sports</label>
 									<input type='checkbox' id='sports' name='interests' onChange={handleCheck} />
 
-									<label htmlFor='game'>Game</label>
+									<label htmlFor='game'>game</label>
 									<input type='checkbox' id='game' name='interests' onChange={handleCheck} />
 
-									<label htmlFor='music'>Music</label>
+									<label htmlFor='music'>music</label>
 									<input type='checkbox' id='music' name='interests' onChange={handleCheck} />
 									{Errs.interests && <p>{Errs.interests}</p>}
 								</td>
@@ -269,6 +268,7 @@ export default function Members() {
 										rows='3'
 										value={Val.comments}
 										onChange={handleChange}
+										placeholder='남기는 말을 입력하세요.'
 									></textarea>
 									{Errs.comments && <p>{Errs.comments}</p>}
 								</td>
@@ -288,15 +288,14 @@ export default function Members() {
 		</Layout>
 	);
 }
+
 /*
 	react-hook-form을 쓰지 않고 직접 기능을 만들었냐?
-	-- 라이브러리는 언제든지 연결할 수 있는건데, 아직 배우는 입장이기 때문에 부족하나마 어떤 
-	인증로직이 처리되는지 직접 만들어 보고 싶었다.
+	-- 라이브러리는 언제든지 연결할 수 있는건데, 아직 배우는 입장이기 때문에 부족하나마 어떤 인증로직이 처리되는지 직접 만들어 보고 싶었다.
 
-	그래서 checkbox, radio, select, textarea 같이 필수입력사항이 아닌 요소도 직접 인증구현을 해봤다.
+	그래서 checkbox, radio, selector, textarea 같이 필수입력사항이 아닌 요소도 직접 인증구현을 해봤다.
 	인증처리 하면서 제일 힘들었던 부분은 비밀번호, 이메일 인증 구현이 힘들었다
 
-	구글링을 해보니 정규표현식의 예시코드가 많이 있었지만 아직 정규표현식을 제대로 공부한것이 아니라
-	모르는 상태에서 붙여넣기 식으로 구현하기는 싫어서
-	내가 알고 있는 문자열 관련 매서드를 최대한 활용해서 구현해봤다
+	구글링을 해보니 정규표현식의 예시코드가 많이 있었지만 아직 정규표현식을 제대로 공부한것이 아니라 모르는 상태에서 붙여넣기 식으로 구현하기는 싫어서 
+	내가 알고 있는 문자열 관련 메서드를 최대한 활용해서 구현해봤다
 */
