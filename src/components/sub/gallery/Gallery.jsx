@@ -1,4 +1,8 @@
 //해당 컴포넌트에 대해 설명, 이슈사항은 ?
+//메뉴 빠르게 이동시 에러가 뜨는 경우
+//원인 : 특정 컴포넌트에 시간이 오래 걸리는 연산작업후 그 결과물을 state에 미처 담기도 전에 컴포넌트가 언마운트 되는 경우 (메모리 누수)
+//해결 방법: 특정 State값이 true일때에만 state에 무거운 값이 담기도록 처리해주고 컴포넌트 unmount시에 해당 값을 false변경
+//컴포넌트 언마운트 될때쯤 state에 담길 값이 준비되지 않으면 state에 값 담기는 걸 무시
 
 import Layout from '../../common/layout/Layout';
 import Modal from '../../common/modal/Modal';
@@ -90,38 +94,40 @@ export default function Gallery() {
 						disableImagesLoaded={false}
 						updateOnEachImageLoad={false}
 					>
-						{Pics.map((data, idx) => {
-							return (
-								<article key={idx}>
-									<div className='inner'>
-										<img
-											className='pic'
-											src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
-											alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
-											onClick={(e) => {
-												setActiveURL(e.target.getAttribute('alt'));
-												dispatch(open());
-											}}
-										/>
-										<h2>{data.title}</h2>
-
-										<div className='profile'>
+						{/* 해당 데이터가 어떤이유에서건 없을때 해당 객체안의 property를 호출할때 런타이미 에러가 뜨는 경우이므로 배열값 자체가 없으면 렌더링을 안해서 property 오류해결 */}
+						{Pics.length !== 0 &&
+							Pics.map((data, idx) => {
+								return (
+									<article key={idx}>
+										<div className='inner'>
 											<img
-												src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
-												alt={data.owner}
-												onError={(e) => {
-													e.target.setAttribute(
-														'src',
-														'https://www.flickr.com/images/buddyicon.gif'
-													);
+												className='pic'
+												src={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_m.jpg`}
+												alt={`https://live.staticflickr.com/${data.server}/${data.id}_${data.secret}_b.jpg`}
+												onClick={(e) => {
+													setActiveURL(e.target.getAttribute('alt'));
+													dispatch(open());
 												}}
 											/>
-											<span onClick={handleClickProfile}>{data.owner}</span>
+											<h2>{data.title}</h2>
+
+											<div className='profile'>
+												<img
+													src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
+													alt={data.owner}
+													onError={(e) => {
+														e.target.setAttribute(
+															'src',
+															'https://www.flickr.com/images/buddyicon.gif'
+														);
+													}}
+												/>
+												<span onClick={handleClickProfile}>{data.owner}</span>
+											</div>
 										</div>
-									</div>
-								</article>
-							);
-						})}
+									</article>
+								);
+							})}
 					</Masonry>
 				</div>
 			</Layout>
