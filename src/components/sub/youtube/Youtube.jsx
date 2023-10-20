@@ -20,10 +20,12 @@ export default function Youtube() {
 							<div className='titBox'>
 								<h2>{tit.length > 60 ? tit.substr(0, 60) + '...' : tit}</h2>
 							</div>
+
 							<div className='conBox'>
 								<p>{desc.length > 180 ? desc.substr(0, 180) + '...' : desc}</p>
 								<span className='Day'>{date.split('T')[0].split('-').join('.')}</span>
 							</div>
+
 							<div className='picBox'>
 								{/* 썸네일 링크 클릭시 특정유뷰트 객체 하나의 정보값을 받기 위해서 유튜브 객체의 id값을 params로 전달 */}
 								<Link to={`/detail/${data.id}`}>

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState } from 'react';
 import 'swiper/css';
+import { Link } from 'react-router-dom';
 
 function Visual() {
 	const { data } = useSelector((store) => store.youtube);
@@ -17,7 +18,9 @@ function Visual() {
 						return (
 							<li key={idx} className={idx === Index ? 'on' : ''}>
 								<h3>{tit.snippet.title}</h3>
-								<button>View Deatil</button>
+								<button>
+									<Link to={`/detail/${tit.id}`}>View Deatil</Link>
+								</button>
 							</li>
 						);
 					})}
