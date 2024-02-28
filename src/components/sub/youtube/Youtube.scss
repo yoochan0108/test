@@ -1,8 +1,8 @@
 .Youtube {
-	background-color: #000;
+	background-color: #bbb;
 
 	article {
-		width: 100%;
+		width: 80%;
 		padding: 20px;
 		display: flex;
 		justify-content: space-between;
@@ -12,6 +12,7 @@
 		background-color: #000;
 		cursor: pointer;
 		transition: 0.5s;
+		margin-left: 110px;
 
 		&:hover {
 			opacity: 0.5;
