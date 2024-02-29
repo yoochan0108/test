@@ -1,0 +1,41 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+ul,
+ol,
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+body {
+	background: #efefef;
+}
+html {
+	&::-webkit-scrollbar {
+		width: 20px;
+	}
+	&::-webkit-scrollbar-thumb {
+		border-radius: 5px;
+		background: #333;
+	}
+}
+table {
+	border-collapse: collapse;
+}
+fieldset {
+	border: none;
+}
+
+.root {
+	--tablet: 1190px;
+}
+.h {
+	position: absolute;
+	top: -9999px;
+	opacity: 0;
+}

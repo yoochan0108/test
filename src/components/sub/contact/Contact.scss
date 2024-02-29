@@ -1,0 +1,147 @@
+.Contact {
+	background-color: ivory;
+	.mainconteiner {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-around;
+		justify-content: left;
+		margin-bottom: 40px;
+		article {
+			p {
+				padding-left: 40px;
+				margin-bottom: 30px;
+			}
+		}
+
+		#mailBox {
+			width: 60%;
+			padding: 20px;
+			// // margin-bottom: 100px;
+			// background-color: ivory;
+
+			.upper {
+				margin-bottom: 50px;
+
+				span {
+					// width: 48%;
+					// display: flex;
+					// flex-wrap: wrap;
+
+					label {
+						display: flex;
+						font: bold 1rem/1 'arial';
+						color: #555;
+						padding: 20px;
+					}
+					input[type='text'],
+					input[type='email'] {
+						display: block;
+						width: 100%;
+						border: none;
+						padding: 10px 20px;
+						border-bottom: 1px solid #555;
+						margin-right: 50px;
+						outline: none;
+						background: none;
+
+						&:focus {
+							background: lightcyan;
+						}
+					}
+				}
+			}
+			.lower {
+				width: 100%;
+				// margin-bottom: 10px;
+
+				label {
+					display: block;
+					margin-bottom: 5px;
+					margin-left: 20px;
+					font: bold 1rem/1 'arial';
+					color: #555;
+				}
+				textarea {
+					display: block;
+					width: 100%;
+					border: none;
+					padding: 10px 20px;
+					border-bottom: 1px solid #555;
+					margin-right: 50px;
+					outline: none;
+					background: none;
+					&:focus {
+						background: lightcyan;
+					}
+				}
+			}
+
+			.btnSet {
+				input {
+				}
+			}
+		}
+	}
+
+	.container {
+		width: 100%;
+		height: 50vh;
+		// background: #111;
+		position: relative;
+
+		.map,
+		.view {
+			width: 100%;
+			height: 50vh;
+			background: #111;
+			position: absolute;
+			top: 0;
+			left: 0px;
+			opacity: 0;
+			z-index: 1;
+
+			&.on {
+				opacity: 1;
+				z-index: 2;
+			}
+		}
+	}
+
+	ul {
+		display: flex;
+		gap: 20px;
+
+		li {
+			cursor: pointer;
+		}
+		li.on {
+			color: hotpink;
+		}
+	}
+	.FAQ {
+		margin-top: 40px;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+	.container {
+		article {
+			margin-top: 40px;
+			display: flex;
+			flex-wrap: wrap;
+			display: inline-block;
+			padding: 20px;
+		}
+	}
+	.nextBox {
+		.lap {
+			margin-bottom: 20px;
+		}
+	}
+}
+
+.tablet,
+.mobile {
+	#mailBox {
+		width: 100%;
+	}
+}

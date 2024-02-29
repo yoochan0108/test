@@ -1,0 +1,124 @@
+.Gallery {
+	background-color: #7e8f6a;
+	.picFrame {
+		width: 100%;
+		justify-content: space-between;
+		flex-wrap: wrap;
+
+		&.on {
+			opacity: 1;
+			transition: 0.5s;
+		}
+		&::after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+		article {
+			display: flex;
+			width: 20%;
+			padding: 10px;
+
+			.inner {
+				border: 5px solid #566446;
+				width: 100%;
+				padding: 10px;
+				background: #fff;
+				box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+				cursor: pointer;
+				transition: 0.5s;
+
+				&:hover {
+					opacity: 0.5;
+					transform: translateY(0.8px);
+					transform: scale(1.1);
+				}
+
+				.pic {
+					width: 100%;
+				}
+				h2 {
+					font: normal 1rem/1.2 'arial';
+					color: #555;
+					margin-top: 10px;
+					margin-bottom: 40px;
+				}
+				.profile {
+					width: 100%;
+					display: flex;
+					align-items: center;
+					gap: 20px;
+
+					span {
+						font-size: 0.8rem;
+					}
+				}
+			}
+		}
+	}
+	.searchBox {
+		margin-left: 10px;
+		text-align: center;
+		input {
+			width: 40%;
+			padding: 5px;
+			&:focus {
+				background: #f6ffeb;
+			}
+		}
+		button {
+			border: none;
+			margin-left: 5px;
+			background-color: #d2f9a5;
+			width: 70px;
+			cursor: pointer;
+			transition: 0.5s;
+			padding: 5px;
+
+			&:hover {
+				opacity: 0.5;
+				transform: translateY(0.8px);
+				transform: scale(1.1);
+			}
+		}
+	}
+	.btnSet {
+		margin-left: 10px;
+		text-align: center;
+		button {
+			border: none;
+			background-color: #d2f9a5;
+			padding: 10px;
+			margin-right: 10px;
+			margin-top: 5px;
+			transition: 1.5s;
+			cursor: pointer;
+			transition: 0.5s;
+
+			&:hover {
+				opacity: 0.5;
+				transform: translateY(0.8px);
+				transform: scale(1.1);
+			}
+		}
+	}
+}
+.laptop {
+	.Gallery {
+		.picFrame {
+			article {
+				width: 48%;
+			}
+		}
+	}
+}
+.mobile {
+	.Gallery {
+		.picFrame {
+			article {
+				width: 100%;
+			}
+		}
+	}
+}
